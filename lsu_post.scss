@@ -1,0 +1,534 @@
+/**
+ * LSU Moodle / Boost Union — external POST SCSS
+ * UI selectors and styling rules. All LSU-owned colors are in lsu_pre.scss.
+ * Use theme_boost_union/extscssurlpost after configuring extscssurlpre.
+ *
+ * @copyright 2026 Robert Russo
+ * @copyright 2026 Louisiana State University
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Retain the original block interaction reset.
+// TODO: Examine whether it suppresses focus indicators on interactive items.
+.block *:active,
+.block *:focus {
+    background-color: inherit !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.course-section .section-item .course-content-item-content .section-content-inner {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+[data-bs-theme="dark"] {
+    #page-admin-theme-boost_union-snippets-overview span.badge.bg-primary.text-light {
+        background-color: var(--bs-light-bg-subtle) !important;
+    }
+}
+
+[data-bs-theme="dark"] #page-header a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] #region-main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] #page-footer a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] .block_html .card-text a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link) {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
+[data-bs-theme="light"] #course-index .courseindex-item[data-for="cm"] {
+    &:hover {
+        background-color: var(--bs-tertiary-bg);
+    }
+}
+
+[data-bs-theme="dark"] #course-index .courseindex-item[data-for="cm"],
+[data-bs-theme="dark"] #settingsnav .block_tree .tree_item {
+    &:hover {
+        background-color: var(--bs-secondary-bg);
+    }
+}
+
+[data-bs-theme="light"] .drawer.drawer-left,
+[data-bs-theme="light"] .drawer.drawer-right {
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+[data-bs-theme="light"] .drawer.drawer-right .card {
+    background-color: var(--bs-gray-100);
+}
+
+.drawer .drawerheader .draweractions .btn {
+    background-color: unset;
+}
+
+[data-bs-theme="light"] .drawer.drawer-right .card .tree-item,
+[data-bs-theme="light"] #settingsnav .block_tree .tree_item {
+    &:hover {
+        background-color: var(--bs-body-bg) !important;
+    }
+}
+
+:root,
+:root[data-bs-theme="light"],
+[data-bs-theme="light"] {
+    @each $name, $value in $lsu-light-color-tokens {
+        --#{$name}: #{$value};
+    }
+}
+
+:root[data-bs-theme="dark"],
+[data-bs-theme="dark"] {
+    @each $name, $value in $lsu-dark-color-tokens {
+        --#{$name}: #{$value};
+    }
+}
+
+// YUI file manager tables: preserve accessibility and contrast in both modes.
+.filemanager .yui3-datatable-header {
+    background: var(--mds-bg-surface-strong) !important;
+    border-bottom: 1px solid var(--mds-border-subtle) !important;
+    border-left: 0 solid var(--mds-border-subtle) !important;
+    color: var(--mds-text-emphasis) !important;
+}
+
+.filemanager .yui3-datatable-odd .yui3-datatable-cell,
+.filemanager .yui3-datatable-even .yui3-datatable-cell {
+    border-left: 0 solid var(--mds-border-subtle) !important;
+    color: var(--mds-text-default) !important;
+}
+
+.filemanager .yui3-datatable-odd .yui3-datatable-cell {
+    background-color: $lsu-filemanager-light-odd !important;
+}
+.filemanager .yui3-datatable-even .yui3-datatable-cell {
+    background-color: var(--mds-bg-surface-default) !important;
+}
+
+[data-bs-theme="dark"] .filemanager .yui3-datatable-odd .yui3-datatable-cell {
+    background-color: var(--mds-bg-surface-subtle) !important;
+}
+
+[data-bs-theme="dark"] .filemanager .fp-toolbar .btn .icon,
+[data-bs-theme="dark"] .filemanager .fp-viewbar .btn .icon {
+    color: var(--mds-text-inverse) !important;
+    filter: none !important;
+}
+
+[data-bs-theme="dark"] .filemanager .fp-thumbnail img,
+[data-bs-theme="dark"] .filemanager .fp-icon img {
+    border: none;
+    filter: invert(1);
+}
+
+[data-bs-theme="dark"] .filemanager .fp-thumbnail img.realpreview,
+[data-bs-theme="dark"] .filemanager .fp-icon img.realpreview {
+    filter: none !important;
+    border: none;
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: var(--mds-text-subtle) !important;
+}
+[data-bs-theme="dark"] .modchoosercontent .optionscontainer .option.selected {
+    background-color: var(--bu-navbar-bg);
+}
+[data-bs-theme="dark"] .navbar.bg-dark,
+[data-bs-theme="dark"] .navbar.bg-primary {
+    --bu-navbar-bg: #{$lsu-navbar-dark-bg} !important;
+}
+
+[data-bs-theme="dark"] {
+    .fa,
+    .fas,
+    .far,
+    .fal,
+    .fab,
+    .fad,
+    .fat,
+    .fa-solid,
+    .fa-regular,
+    .fa-light,
+    .fa-brands,
+    .svg-inline--fa {
+        color: var(--bs-body-color) !important;
+    }
+
+    // Course content and course index activity SVG images.
+    .activityiconcontainer img.activityicon,
+    .courseindex-cmicon-icon img.icon {
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+// Reset legacy background and borders.
+.path-grade .table th.category,
+.path-grade-report-singleview .table tbody td,
+.path-grade-report-singleview .table tbody th,
+.path-grade-report-singleview .table .category,
+.path-grade-report-singleview div.reporttable,
+.path-grade-report-user .user-grade thead th,
+.grade-report-user .user-grade thead th,
+.path-grade-report-user .user-grade td.item,
+.grade-report-user .user-grade td.item,
+.path-grade-report-user .user-report-container,
+.grade-report-user .user-report-container,
+.path-grade-report-user .user-grade tbody tr,
+.grade-report-user .user-grade tbody tr,
+.path-grade-report-user .user-grade th.column-itemname,
+.grade-report-user .user-grade th.column-itemname,
+.path-grade-report-user .user-grade td,
+.grade-report-user .user-grade td,
+.path-grade-report-user .user-grade:not(.nevertides) {
+    background-color: inherit !important;
+    border-top: inherit !important;
+    border-bottom: inherit !important;
+}
+
+.path-grade-report-singleview .reporttable tbody tr,
+.path-grade-report-singleview .reporttable tbody tr:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+    border-top: inherit !important;
+    border-bottom: inherit !important;
+}
+
+:is(.path-grade, .path-grade-report-singleview, .path-grade-report-user, .grade-report-user) {
+    .table {
+        --bs-table-hover-bg: transparent !important;
+    }
+    .table tbody tr:not(.heading):hover,
+    .table tbody tr:not(.heading):hover > td,
+    .table tbody tr:not(.heading):hover > th,
+    .user-grade tbody tr:hover,
+    .user-grade tbody tr:hover > td,
+    .user-grade tbody tr:hover > th {
+        background-color: inherit !important;
+    }
+    .table-hover > tbody > tr:not(.heading):hover > * {
+        --bs-table-bg-state: transparent !important;
+    }
+}
+
+[data-bs-theme="light"] {
+    .path-grade .gradereport-grader-table tbody tr.odd th,
+    .path-grade .gradereport-grader-table tbody tr.odd td,
+    .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
+        background-color: lighten($gray-100, 3%) !important;
+    }
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
+    .path-grade .generaltable tbody tr:not(.heading):hover {
+        background-color: $gray-100 !important;
+    }
+    #page-grade-report-grade_breakdown-index .lastrow {
+        background-color: inherit !important;
+    }
+}
+
+[data-bs-theme="dark"] {
+    .path-grade .gradereport-grader-table tbody tr.odd th,
+    .path-grade .gradereport-grader-table tbody tr.odd td,
+    .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
+        background-color: lighten($gray-900, 3%) !important;
+    }
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
+    .path-grade .generaltable tbody tr:not(.heading):hover {
+        background-color: $gray-900 !important;
+    }
+    #page-grade-report-grade_breakdown-index .lastrow {
+        background-color: inherit !important;
+    }
+}
+
+// The entire level shares a tint.
+.path-grade .gradereport-grader-table {
+    tr:not(.heading) > :is(
+        th.category,
+        td.filler,
+        td.fillerfirst,
+        td.fillerlast
+    ).cell[class*="catlevel"] {
+        background-color: var(--lsu-category-bg) !important;
+        background-image: none !important;
+        background-clip: border-box;
+        --bs-table-bg: var(--lsu-category-bg);
+        --bs-table-bg-state: transparent;
+        --bs-table-bg-type: transparent;
+        --bs-table-accent-bg: transparent;
+        --bs-border-color: var(--lsu-category-bg);
+        --bs-table-border-color: var(--lsu-category-bg);
+        border: 1px solid var(--lsu-category-bg) !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    // Do not alter name/email th elementss, or tr.heading borders/padding/focus states.
+    tr.heading > th:is(.item, .categoryitem, .courseitem).cell[class*="catlevel"] {
+        background-color: var(--lsu-category-bg) !important;
+        background-image: none !important;
+        --bs-table-bg: var(--lsu-category-bg);
+        --bs-table-bg-state: transparent;
+        --bs-table-bg-type: transparent;
+        --bs-table-accent-bg: transparent;
+        .gradeitemheader {
+            color: var(--lsu-grade-item-title) !important;
+        }
+    }
+}
+
+@for $level from 1 through 24 {
+    $shade: ceil($level * 0.5);
+    @if $shade > 4 {
+        $shade: 4;
+    }
+    @if $level % 2 == 1 {
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-light-odd, $shade)};
+            --lsu-grade-item-title: #{$lsu-grade-title-light-odd};
+        }
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-dark-odd, $shade)};
+            --lsu-grade-item-title: #{$lsu-grade-title-dark-odd};
+        }
+    } @else {
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-light-even, $shade)};
+            --lsu-grade-item-title: #{$lsu-grade-title-light-even};
+        }
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-dark-even, $shade)};
+            --lsu-grade-item-title: #{$lsu-grade-title-dark-even};
+        }
+    }
+}
+
+#settingsnav {
+    &.block_tree_box {
+        padding: 0.25rem 0 !important;
+    }
+
+    .block_tree {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        ul {
+            margin: 0 !important;
+            padding-left: 0.85rem !important;
+            list-style: none;
+        }
+        > li {
+            padding-left: 0 !important;
+        }
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .tree_item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 2rem;
+            margin: 0.1rem 0 !important;
+            padding: 0.35rem 0.5rem 0.35rem 1.5rem !important;
+            border-radius: 0.35rem;
+            background: transparent;
+            transition: background-color 0.15s ease;
+            > a,
+            > span {
+                color: inherit;
+                text-decoration: none;
+                line-height: 1.4;
+            }
+            &:focus-within {
+                outline: 2px solid var(--bs-primary);
+                outline-offset: -2px;
+            }
+        }
+        .tree_item.branch {
+            background-image: none !important;
+            &::before {
+                content: none !important;
+            }
+        }
+        li.contains_branch > .tree_item.branch::before {
+            content: "" !important;
+            display: block;
+            position: absolute;
+            left: 0.45rem;
+            top: 50%;
+            width: 0.4rem;
+            height: 0.4rem;
+            border-right: 1.75px solid currentColor;
+            border-bottom: 1.75px solid currentColor;
+            transform: translateY(-65%) rotate(-45deg);
+            transition: transform 0.15s ease;
+            opacity: 0.75;
+        }
+        li.contains_branch[aria-expanded="true"] > .tree_item.branch::before {
+            transform: translateY(-75%) rotate(45deg);
+        }
+        .tree_item.leaf::before {
+            content: none !important;
+        }
+        .navicon {
+            margin-right: 0.4rem;
+            opacity: 0.8;
+            flex-shrink: 0;
+        }
+        > li.depth_1 > .tree_item.root_node {
+            font-weight: 600;
+            padding-top: 0.55rem !important;
+            padding-bottom: 0.55rem !important;
+        }
+        > li.depth_1 > hr {
+            margin: 0.65rem 0;
+            opacity: 0.15;
+        }
+    }
+}
+
+html[data-bs-theme="light"] #settingsnav {
+    --lsu-focus: #{$lsu-siteadmin-focus-light};
+}
+html[data-bs-theme="dark"] #settingsnav {
+    --lsu-focus: #{$lsu-siteadmin-focus-dark};
+}
+#settingsnav .block_tree {
+    .tree_item:focus-within,
+    .tree_item > a:focus,
+    .tree_item > a:focus-visible {
+        // Keep original light-mode fallback for pages without a theme attribute.
+        outline: 2px solid var(--lsu-focus, #{$lsu-siteadmin-focus-light}) !important;
+        outline-offset: -2px !important;
+        box-shadow: none !important;
+    }
+}
+
+// LSU Activity Chooser Modal Width (lsu_boost_union_modal_width.scss)
+.modal-dialog.modchooser[data-region="modal"] {
+    width: 80vw !important;
+    max-width: 80vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.modal-dialog.modchooser[data-region="modal"] > .modal-content {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: left;
+}
+
+// Mobile compliant drawer controls (lsu_mobile_drawers.scss)
+@include media-breakpoint-down(md) {
+    .drawer-toggles .drawer-toggler {
+        top: calc(#{$navbar-height} + 0.7rem);
+        bottom: auto;
+    }
+}
+
+// More accessible Table Highlights (lsu_table_highlights.scss)
+@mixin lsu-table-highlight-cell($background, $foreground) {
+    --bs-table-bg: #{$background};
+    --bs-table-color: #{$foreground};
+    --bs-table-hover-bg: #{$background};
+    --bs-table-hover-color: #{$foreground};
+    --bs-table-accent-bg: transparent;
+    --bs-table-bg-type: #{$background};
+    --bs-table-bg-state: #{$background};
+    --bs-table-color-type: #{$foreground};
+    --bs-table-color-state: #{$foreground};
+    background-color: $background !important;
+    color: $foreground !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme="dark"] {
+    .table {
+        tr.table-primary {
+            > th,
+            > td {
+                @include lsu-table-highlight-cell($lsu-table-primary-dark-bg, $lsu-table-text-dark);
+            }
+            a:not(.btn),
+            a.btn-link {
+                text-decoration: underline;
+                text-underline-offset: 0.15em;
+            }
+        }
+        tbody tr:not(.table-primary):hover {
+            > th:not(.table-danger),
+            > td:not(.table-danger) {
+                @include lsu-table-highlight-cell($lsu-table-hover-dark-bg, $lsu-table-text-dark);
+            }
+        }
+        tr.table-primary,
+        tbody tr:not(.table-primary):hover {
+            .task-class,
+            .text-muted {
+                color: $lsu-table-muted-dark !important;
+                opacity: 1;
+            }
+            a:not(.btn),
+            a.btn-link {
+                color: $lsu-table-link-dark !important;
+                .icon {
+                    color: inherit !important;
+                }
+                &:hover,
+                &:focus-visible {
+                    color: $lsu-table-link-hover-dark !important;
+                    text-decoration: underline;
+                    text-underline-offset: 0.15em;
+                }
+                &:focus-visible {
+                    outline: 2px solid $lsu-table-link-dark !important;
+                    outline-offset: 2px;
+                }
+            }
+        }
+        > tbody > tr {
+            > th.table-danger,
+            > td.table-danger,
+            &:hover > th.table-danger,
+            &:hover > td.table-danger {
+                @include lsu-table-highlight-cell($lsu-table-danger-dark-bg, $lsu-table-danger-dark-fg);
+                border-bottom: 1px solid $lsu-table-border-dark !important;
+            }
+        }
+    }
+}
+
+[data-bs-theme="dark"] #page-admin-tool-task-scheduledtasks,
+#page-admin-tool-task-scheduledtasks[data-bs-theme="dark"] {
+    .table > tbody > tr {
+        > th,
+        > td {
+            border-bottom: 1px solid $lsu-table-border-dark !important;
+        }
+    }
+}
+
+[data-bs-theme="light"] .table > tbody > tr {
+    > th.table-danger,
+    > td.table-danger,
+    &:hover > th.table-danger,
+    &:hover > td.table-danger {
+        @include lsu-table-highlight-cell($lsu-table-danger-light-bg, $lsu-table-danger-light-fg);
+    }
+}
