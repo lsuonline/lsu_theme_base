@@ -1,0 +1,20 @@
+/**
+ * Snippet Title: Mobile compliant drawer controls
+ * Scope:         global
+ * Goal:          accessibility
+ * Description:   Move drawer controls to top.
+ * Creator:       Robert Russo
+ * Tested on:     Moodle 5.3, IOS.
+ *
+ * @copyright     2026 Robert Russo
+ * @author        Robert Russo <rrusso@lsu.edu>
+ * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Force drawer toggle buttons to the top on mobile viewports (< 768px)
+@include media-breakpoint-down(md) {
+    .drawer-toggles .drawer-toggler {
+        top: calc(#{$navbar-height} + 0.7rem);
+        bottom: auto;
+    }
+}

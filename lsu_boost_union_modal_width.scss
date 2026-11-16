@@ -1,0 +1,29 @@
+/**
+ * Snippet Title: LSU Activity Chooser Modal Width
+ * Scope:         course
+ * Goal:          easeofuse
+ * Description:   Centre the activity chooser at 80% of the browser viewport width and remove a conflicting inner panel width limit.
+ * Creator:       Robert Russo
+ * Tested on:     Supplied Moodle 5.3 HTML and compiled stylesheet reviewed; browser verification pending.
+ * Usage note:    Replace the previous file in Boost Union > SCSS snippets > Settings, save, then enable this snippet on the Overview tab.
+ *
+ * @copyright     2026 Robert Russo
+ * @copyright     2026 Louisiana State University
+ * @author        Robert Russo <rrusso@lsu.edu>
+ * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Size the outer dialog and keep it centred.
+.modal-dialog.modchooser[data-region="modal"] {
+    width: 80vw !important;
+    max-width: 80vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+// The site's stylesheet also applies max-width: 500px.
+.modal-dialog.modchooser[data-region="modal"] > .modal-content {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: left;
+}

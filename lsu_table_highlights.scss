@@ -1,0 +1,117 @@
+/**
+ * Snippet Title: LSU Accessible Table Highlights
+ * Scope: global
+ * Description: Dark-mode primary rows and hover styling, persistent danger
+ *              cells in both modes, and consistent scheduled-task separators.
+ * @copyright 2026 Robert Russo
+ * @copyright 2026 Louisiana State University
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * Replace the previous table-highlight snippets with this file.
+ */
+
+// Shared cell treatment; interpolation supports Moodle's SCSS compiler.
+@mixin lsu-table-highlight-cell($background, $foreground) {
+    --bs-table-bg: #{$background};
+    --bs-table-color: #{$foreground};
+    --bs-table-hover-bg: #{$background};
+    --bs-table-hover-color: #{$foreground};
+    --bs-table-accent-bg: transparent;
+    --bs-table-bg-type: #{$background};
+    --bs-table-bg-state: #{$background};
+    --bs-table-color-type: #{$foreground};
+    --bs-table-color-state: #{$foreground};
+
+    background-color: $background !important;
+    color: $foreground !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme="dark"] {
+    .table {
+        // Primary rows remain highlighted at rest and on hover.
+        tr.table-primary {
+            > th,
+            > td {
+                @include lsu-table-highlight-cell(#342b40, #f5f3f7);
+            }
+
+            a:not(.btn),
+            a.btn-link {
+                text-decoration: underline;
+                text-underline-offset: 0.15em;
+            }
+        }
+
+        // Exclude danger cells so their warning highlight always wins.
+        tbody tr:not(.table-primary):hover {
+            > th:not(.table-danger),
+            > td:not(.table-danger) {
+                @include lsu-table-highlight-cell(#292330, #f5f3f7);
+            }
+        }
+
+        // Shared secondary text and links for the two dark row treatments.
+        tr.table-primary,
+        tbody tr:not(.table-primary):hover {
+            .task-class,
+            .text-muted {
+                color: #d1cbd8 !important;
+                opacity: 1;
+            }
+
+            a:not(.btn),
+            a.btn-link {
+                color: #e0d0f5 !important;
+
+                .icon {
+                    color: inherit !important;
+                }
+
+                &:hover,
+                &:focus-visible {
+                    color: #ffffff !important;
+                    text-decoration: underline;
+                    text-underline-offset: 0.15em;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid #e0d0f5 !important;
+                    outline-offset: 2px;
+                }
+            }
+        }
+
+        // Persistent danger cells, including inside primary or hovered rows.
+        > tbody > tr {
+            > th.table-danger,
+            > td.table-danger,
+            &:hover > th.table-danger,
+            &:hover > td.table-danger {
+                @include lsu-table-highlight-cell(#4a2630, #fff1f3);
+                border-bottom: 1px solid #48414f !important;
+            }
+        }
+    }
+}
+
+// Handle dark mode on either the page body itself or an ancestor.
+[data-bs-theme="dark"] #page-admin-tool-task-scheduledtasks,
+#page-admin-tool-task-scheduledtasks[data-bs-theme="dark"] {
+    .table > tbody > tr {
+        > th,
+        > td {
+            border-bottom: 1px solid #48414f !important;
+        }
+    }
+}
+
+// Light mode: standard danger colors at rest and during hover.
+[data-bs-theme="light"] .table > tbody > tr {
+    > th.table-danger,
+    > td.table-danger,
+    &:hover > th.table-danger,
+    &:hover > td.table-danger {
+        @include lsu-table-highlight-cell(#f8d7da, #58151c);
+    }
+}
