@@ -1,33 +1,22 @@
-/**
- * LSU Moodle / Boost Union — external POST SCSS
- * UI selectors and styling rules. All LSU-owned colors are in lsu_pre.scss.
- * Use theme_boost_union/extscssurlpost after configuring extscssurlpre.
- *
- * @copyright 2026 Robert Russo
- * @copyright 2026 Louisiana State University
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-// Retain the original block interaction reset.
-// TODO: Examine whether it suppresses focus indicators on interactive items.
+// Force remove background shifts and borders on click/focus for block menus.
 .block *:active,
-.block *:focus {
+ .block *:focus {
     background-color: inherit !important;
     box-shadow: none !important;
     outline: none !important;
 }
 
+// Deal with course radii.
 .course-section .section-item .course-content-item-content .section-content-inner {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
-
+// Badges in dark mode snippets area.
 [data-bs-theme="dark"] {
     #page-admin-theme-boost_union-snippets-overview span.badge.bg-primary.text-light {
         background-color: var(--bs-light-bg-subtle) !important;
     }
 }
-
 [data-bs-theme="dark"] #page-header a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
 [data-bs-theme="dark"] #region-main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
 [data-bs-theme="dark"] #page-footer a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
@@ -50,7 +39,6 @@
         background-color: var(--bs-secondary-bg);
     }
 }
-
 [data-bs-theme="light"] .drawer.drawer-left,
 [data-bs-theme="light"] .drawer.drawer-right {
     background-color: var(--bs-primary-bg-subtle);
@@ -63,7 +51,6 @@
 .drawer .drawerheader .draweractions .btn {
     background-color: unset;
 }
-
 [data-bs-theme="light"] .drawer.drawer-right .card .tree-item,
 [data-bs-theme="light"] #settingsnav .block_tree .tree_item {
     &:hover {
@@ -71,6 +58,7 @@
     }
 }
 
+/* LIGHT MODE: applies to ordinary pages and explicit Bootstrap light mode. */
 :root,
 :root[data-bs-theme="light"],
 [data-bs-theme="light"] {
@@ -79,6 +67,7 @@
     }
 }
 
+/* DARK MODE: mode-appropriate variants preserve legibility and LSU identity. */
 :root[data-bs-theme="dark"],
 [data-bs-theme="dark"] {
     @each $name, $value in $lsu-dark-color-tokens {
@@ -86,7 +75,11 @@
     }
 }
 
-// YUI file manager tables: preserve accessibility and contrast in both modes.
+/*
+ * YUI filemanager tables use the runtime palette in both light and dark mode.
+ * Load these overrides after Moodle's core styles using the theme's Raw SCSS.
+ */
+/* stylelint-disable declaration-no-important */
 .filemanager .yui3-datatable-header {
     background: var(--mds-bg-surface-strong) !important;
     border-bottom: 1px solid var(--mds-border-subtle) !important;
@@ -101,28 +94,30 @@
 }
 
 .filemanager .yui3-datatable-odd .yui3-datatable-cell {
-    background-color: $lsu-filemanager-light-odd !important;
+    background-color: $lsu-color-e8e4ed !important;
 }
+
 .filemanager .yui3-datatable-even .yui3-datatable-cell {
     background-color: var(--mds-bg-surface-default) !important;
 }
-
+/* Keep the original dark-mode row colors. */
 [data-bs-theme="dark"] .filemanager .yui3-datatable-odd .yui3-datatable-cell {
     background-color: var(--mds-bg-surface-subtle) !important;
 }
 
+/* Dark glyphs remain legible on the existing pale toolbar buttons. */
 [data-bs-theme="dark"] .filemanager .fp-toolbar .btn .icon,
 [data-bs-theme="dark"] .filemanager .fp-viewbar .btn .icon {
     color: var(--mds-text-inverse) !important;
     filter: none !important;
 }
+/* stylelint-enable declaration-no-important */
 
 [data-bs-theme="dark"] .filemanager .fp-thumbnail img,
 [data-bs-theme="dark"] .filemanager .fp-icon img {
     border: none;
     filter: invert(1);
 }
-
 [data-bs-theme="dark"] .filemanager .fp-thumbnail img.realpreview,
 [data-bs-theme="dark"] .filemanager .fp-icon img.realpreview {
     filter: none !important;
@@ -132,12 +127,13 @@
 [data-bs-theme="dark"] .text-dark {
     color: var(--mds-text-subtle) !important;
 }
+
 [data-bs-theme="dark"] .modchoosercontent .optionscontainer .option.selected {
     background-color: var(--bu-navbar-bg);
 }
 [data-bs-theme="dark"] .navbar.bg-dark,
 [data-bs-theme="dark"] .navbar.bg-primary {
-    --bu-navbar-bg: #{$lsu-navbar-dark-bg} !important;
+    --bu-navbar-bg: #{$lsu-color-201330} !important;
 }
 
 [data-bs-theme="dark"] {
@@ -155,15 +151,21 @@
     .svg-inline--fa {
         color: var(--bs-body-color) !important;
     }
+}
 
-    // Course content and course index activity SVG images.
+// Make activity and course index SVG icons white in dark mode.
+
+[data-bs-theme="dark"] {
+
+    // Activity icons in course content.
     .activityiconcontainer img.activityicon,
+    // Activity icons in the course index (sidebar).
     .courseindex-cmicon-icon img.icon {
         filter: brightness(0) invert(1) !important;
     }
 }
 
-// Reset legacy background and borders.
+//Global fixes becuase I wrote something 20 years ago and the world forgot about it.
 .path-grade .table th.category,
 .path-grade-report-singleview .table tbody td,
 .path-grade-report-singleview .table tbody th,
@@ -182,9 +184,9 @@
 .path-grade-report-user .user-grade td,
 .grade-report-user .user-grade td,
 .path-grade-report-user .user-grade:not(.nevertides) {
-    background-color: inherit !important;
-    border-top: inherit !important;
-    border-bottom: inherit !important;
+        background-color: inherit !important;
+        border-top: inherit !important;
+        border-bottom: inherit !important;
 }
 
 .path-grade-report-singleview .reporttable tbody tr,
@@ -195,10 +197,18 @@
     border-bottom: inherit !important;
 }
 
-:is(.path-grade, .path-grade-report-singleview, .path-grade-report-user, .grade-report-user) {
+// Remove specified grade report table hover backgrounds.
+:is(.path-grade,
+    .path-grade-report-singleview,
+    .path-grade-report-user,
+    .grade-report-user) {
+
+    // Disable Bootstrap table hover coloring.
     .table {
         --bs-table-hover-bg: transparent !important;
     }
+
+    // Remove hover backgrounds from rows and cells.
     .table tbody tr:not(.heading):hover,
     .table tbody tr:not(.heading):hover > td,
     .table tbody tr:not(.heading):hover > th,
@@ -207,45 +217,73 @@
     .user-grade tbody tr:hover > th {
         background-color: inherit !important;
     }
+
+    // Override Bootstrap 5.3's hover overlay.
     .table-hover > tbody > tr:not(.heading):hover > * {
         --bs-table-bg-state: transparent !important;
     }
 }
 
+
+// Light mode changes.
 [data-bs-theme="light"] {
+    // Lighter rows for the odds.
     .path-grade .gradereport-grader-table tbody tr.odd th,
     .path-grade .gradereport-grader-table tbody tr.odd td,
     .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
         background-color: lighten($gray-100, 3%) !important;
     }
+
+    // Darker rows for the evens.
     .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
     .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
     .path-grade .generaltable tbody tr:not(.heading):hover {
-        background-color: $gray-100 !important;
+         background-color: $gray-100 !important;
     }
+
     #page-grade-report-grade_breakdown-index .lastrow {
-        background-color: inherit !important;
-    }
+         background-color: inherit !important;
+   }
 }
 
+//Dark mode changes.
 [data-bs-theme="dark"] {
+    // Lighter rows for the odds.
     .path-grade .gradereport-grader-table tbody tr.odd th,
     .path-grade .gradereport-grader-table tbody tr.odd td,
     .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
         background-color: lighten($gray-900, 3%) !important;
     }
+
+    // Darker rows for the evens.
     .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
     .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
     .path-grade .generaltable tbody tr:not(.heading):hover {
-        background-color: $gray-900 !important;
+         background-color: $gray-900 !important;
     }
+
     #page-grade-report-grade_breakdown-index .lastrow {
-        background-color: inherit !important;
-    }
+         background-color: inherit !important;
+   }
 }
 
-// The entire level shares a tint.
+// -----------------------------------------------------------------------------
+// LSU Gradebook: contiguous category bands + coordinated grade-item headings
+// -----------------------------------------------------------------------------
+// Moodle's category hierarchy uses th.category plus td.filler* cells. Those
+// cells should visually form one band at each catlevelN. Paint their 1px
+// structural borders with the background tint so no interior seams show.
+//
+// Grade items live in tr.heading as th.item / th.categoryitem / th.courseitem.
+// Tint ONLY those grade-item TH cells and their visible title text using the
+// corresponding category level. Keep their original borders, focus rings,
+// padding, icons and interaction states. The two name/email TH cells in the
+// heading row are intentionally left entirely alone.
+//
+// Use slightly deeper but still restrained LSU purple / gold-inspired tints.
+
 .path-grade .gradereport-grader-table {
+    // Category and filler cells: one seamless tinted region per level.
     tr:not(.heading) > :is(
         th.category,
         td.filler,
@@ -255,50 +293,62 @@
         background-color: var(--lsu-category-bg) !important;
         background-image: none !important;
         background-clip: border-box;
+
         --bs-table-bg: var(--lsu-category-bg);
         --bs-table-bg-state: transparent;
         --bs-table-bg-type: transparent;
         --bs-table-accent-bg: transparent;
         --bs-border-color: var(--lsu-category-bg);
         --bs-table-border-color: var(--lsu-category-bg);
+
+        // Match borders to the tint. No outlines or inset shadows.
         border: 1px solid var(--lsu-category-bg) !important;
         outline: none !important;
         box-shadow: none !important;
     }
 
-    // Do not alter name/email th elementss, or tr.heading borders/padding/focus states.
+    // Grade-item cells ONLY; do not change the heading row's structural cells.
     tr.heading > th:is(.item, .categoryitem, .courseitem).cell[class*="catlevel"] {
         background-color: var(--lsu-category-bg) !important;
         background-image: none !important;
+
         --bs-table-bg: var(--lsu-category-bg);
         --bs-table-bg-state: transparent;
         --bs-table-bg-type: transparent;
         --bs-table-accent-bg: transparent;
+
+        // Text-only accent on the grade item title (not the entire TH).
         .gradeitemheader {
             color: var(--lsu-grade-item-title) !important;
         }
+
+        // Deliberately NO border, shadow, outline or padding overrides here.
     }
 }
 
+// The same catlevel token colors both its category band and grade-item title
+// cell; there is no need to infer the category from the item label or ID.
 @for $level from 1 through 24 {
     $shade: ceil($level * 0.5);
     @if $shade > 4 {
         $shade: 4;
     }
+
     @if $level % 2 == 1 {
         [data-bs-theme="light"] .path-grade .gradereport-grader-table
         tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
         [data-bs-theme="light"] .path-grade .gradereport-grader-table
         tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
             --lsu-category-bg: #{nth($lsu-category-light-odd, $shade)};
-            --lsu-grade-item-title: #{$lsu-grade-title-light-odd};
+            --lsu-grade-item-title: #{$lsu-color-271145};
         }
+
         [data-bs-theme="dark"] .path-grade .gradereport-grader-table
         tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
         [data-bs-theme="dark"] .path-grade .gradereport-grader-table
         tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
             --lsu-category-bg: #{nth($lsu-category-dark-odd, $shade)};
-            --lsu-grade-item-title: #{$lsu-grade-title-dark-odd};
+            --lsu-grade-item-title: #{$lsu-color-f1eaf8};
         }
     } @else {
         [data-bs-theme="light"] .path-grade .gradereport-grader-table
@@ -306,19 +356,22 @@
         [data-bs-theme="light"] .path-grade .gradereport-grader-table
         tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
             --lsu-category-bg: #{nth($lsu-category-light-even, $shade)};
-            --lsu-grade-item-title: #{$lsu-grade-title-light-even};
+            --lsu-grade-item-title: #{$lsu-color-292723};
         }
+
         [data-bs-theme="dark"] .path-grade .gradereport-grader-table
         tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
         [data-bs-theme="dark"] .path-grade .gradereport-grader-table
         tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
             --lsu-category-bg: #{nth($lsu-category-dark-even, $shade)};
-            --lsu-grade-item-title: #{$lsu-grade-title-dark-even};
+            --lsu-grade-item-title: #{$lsu-color-f4f0e8};
         }
     }
 }
 
+// Modernized Course and Site Administration tree.
 #settingsnav {
+    // Remove unnecessary padding around the tree.
     &.block_tree_box {
         padding: 0.25rem 0 !important;
     }
@@ -327,19 +380,25 @@
         margin: 0;
         padding: 0;
         list-style: none;
+
+        // Reset nested tree indentation.
         ul {
             margin: 0 !important;
             padding-left: 0.85rem !important;
             list-style: none;
         }
+
         > li {
             padding-left: 0 !important;
         }
+
         li {
             list-style: none;
             margin: 0;
             padding: 0;
         }
+
+        // Individual menu items.
         .tree_item {
             position: relative;
             display: flex;
@@ -350,23 +409,32 @@
             border-radius: 0.35rem;
             background: transparent;
             transition: background-color 0.15s ease;
+
+            // Links and labels.
             > a,
             > span {
                 color: inherit;
                 text-decoration: none;
                 line-height: 1.4;
             }
+
+            // Keyboard accessibility.
             &:focus-within {
                 outline: 2px solid var(--bs-primary);
                 outline-offset: -2px;
             }
         }
+
+        // Remove Moodle's existing expand/collapse triangles.
         .tree_item.branch {
             background-image: none !important;
+
             &::before {
                 content: none !important;
             }
         }
+
+        // New chevron for expandable branches.
         li.contains_branch > .tree_item.branch::before {
             content: "" !important;
             display: block;
@@ -381,22 +449,33 @@
             transition: transform 0.15s ease;
             opacity: 0.75;
         }
-        li.contains_branch[aria-expanded="true"] > .tree_item.branch::before {
+
+        // Expanded state: chevron points down.
+        li.contains_branch[aria-expanded="true"]
+            > .tree_item.branch::before {
             transform: translateY(-75%) rotate(45deg);
         }
+
+        // Leaf items do not have expand/collapse controls.
         .tree_item.leaf::before {
             content: none !important;
         }
+
+        // Font Awesome menu icons.
         .navicon {
             margin-right: 0.4rem;
             opacity: 0.8;
             flex-shrink: 0;
         }
+
+        // Root menu headings.
         > li.depth_1 > .tree_item.root_node {
             font-weight: 600;
             padding-top: 0.55rem !important;
             padding-bottom: 0.55rem !important;
         }
+
+        // Cleaner separator between root sections.
         > li.depth_1 > hr {
             margin: 0.65rem 0;
             opacity: 0.15;
@@ -404,37 +483,57 @@
     }
 }
 
+/* LSU administration keyboard focus colors. */
+/* Light mode. */
 html[data-bs-theme="light"] #settingsnav {
-    --lsu-focus: #{$lsu-siteadmin-focus-light};
+    --lsu-focus: #{$lsu-color-fff2b3};
 }
+/* Dark mode. */
 html[data-bs-theme="dark"] #settingsnav {
-    --lsu-focus: #{$lsu-siteadmin-focus-dark};
+    --lsu-focus: #{$lsu-color-461d7c};
 }
+
+/* Apply to the menu item AND its focused link. */
 #settingsnav .block_tree {
     .tree_item:focus-within,
     .tree_item > a:focus,
     .tree_item > a:focus-visible {
-        // Keep original light-mode fallback for pages without a theme attribute.
-        outline: 2px solid var(--lsu-focus, #{$lsu-siteadmin-focus-light}) !important;
+        outline: 2px solid var(--lsu-focus, #{$lsu-color-fff2b3}) !important;
         outline-offset: -2px !important;
         box-shadow: none !important;
     }
 }
 
-// LSU Activity Chooser Modal Width (lsu_boost_union_modal_width.scss)
+@keyframes jiggle {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-10deg); }
+    40%  { transform: rotate(10deg); }
+    60%  { transform: rotate(-8deg); }
+    80%  { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+}
+#usernavigation .nav-link:hover .icon {
+    color: $lsu-color-fdd023 !important;
+    animation: jiggle 0.4s ease-in-out;
+    transform-origin: center;
+}
+
+// Size the outer dialog and keep it centred.
 .modal-dialog.modchooser[data-region="modal"] {
     width: 80vw !important;
     max-width: 80vw !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
+// The site's stylesheet also applies max-width: 500px.
 .modal-dialog.modchooser[data-region="modal"] > .modal-content {
     width: 100% !important;
     max-width: none !important;
     text-align: left;
 }
 
-// Mobile compliant drawer controls (lsu_mobile_drawers.scss)
+// Force drawer toggle buttons to the top on mobile viewports (< 768px)
 @include media-breakpoint-down(md) {
     .drawer-toggles .drawer-toggler {
         top: calc(#{$navbar-height} + 0.7rem);
@@ -442,7 +541,7 @@ html[data-bs-theme="dark"] #settingsnav {
     }
 }
 
-// More accessible Table Highlights (lsu_table_highlights.scss)
+// Shared cell treatment; interpolation supports Moodle's SCSS compiler.
 @mixin lsu-table-highlight-cell($background, $foreground) {
     --bs-table-bg: #{$background};
     --bs-table-color: #{$foreground};
@@ -453,82 +552,97 @@ html[data-bs-theme="dark"] #settingsnav {
     --bs-table-bg-state: #{$background};
     --bs-table-color-type: #{$foreground};
     --bs-table-color-state: #{$foreground};
+
     background-color: $background !important;
     color: $foreground !important;
     box-shadow: none !important;
 }
 
 [data-bs-theme="dark"] {
-    .table {
+    .table:not(.gradereport-grader-table):not(.user-grade):not(.reporttable) {
+        // Primary rows remain highlighted at rest and on hover.
         tr.table-primary {
             > th,
             > td {
-                @include lsu-table-highlight-cell($lsu-table-primary-dark-bg, $lsu-table-text-dark);
+                @include lsu-table-highlight-cell($lsu-color-342b40, $lsu-color-f5f3f7);
             }
+
             a:not(.btn),
             a.btn-link {
                 text-decoration: underline;
                 text-underline-offset: 0.15em;
             }
         }
-        tbody tr:not(.table-primary):hover {
+
+        // Exclude danger cells so their warning highlight always wins.
+        tbody tr:not(.heading):not(.table-primary):hover {
             > th:not(.table-danger),
             > td:not(.table-danger) {
-                @include lsu-table-highlight-cell($lsu-table-hover-dark-bg, $lsu-table-text-dark);
+                @include lsu-table-highlight-cell($lsu-color-292330, $lsu-color-f5f3f7);
             }
         }
+
+        // Shared secondary text and links for the two dark row treatments.
         tr.table-primary,
-        tbody tr:not(.table-primary):hover {
+        tbody tr:not(.heading):not(.table-primary):hover {
             .task-class,
             .text-muted {
-                color: $lsu-table-muted-dark !important;
+                color: $lsu-color-d1cbd8 !important;
                 opacity: 1;
             }
+
             a:not(.btn),
             a.btn-link {
-                color: $lsu-table-link-dark !important;
+                color: $lsu-color-e0d0f5 !important;
+
                 .icon {
                     color: inherit !important;
                 }
+
                 &:hover,
                 &:focus-visible {
-                    color: $lsu-table-link-hover-dark !important;
+                    color: $lsu-color-ffffff !important;
                     text-decoration: underline;
                     text-underline-offset: 0.15em;
                 }
+
                 &:focus-visible {
-                    outline: 2px solid $lsu-table-link-dark !important;
+                    outline: 2px solid $lsu-color-e0d0f5 !important;
                     outline-offset: 2px;
                 }
             }
         }
+
+        // Persistent danger cells, including inside primary or hovered rows.
         > tbody > tr {
             > th.table-danger,
             > td.table-danger,
             &:hover > th.table-danger,
             &:hover > td.table-danger {
-                @include lsu-table-highlight-cell($lsu-table-danger-dark-bg, $lsu-table-danger-dark-fg);
-                border-bottom: 1px solid $lsu-table-border-dark !important;
+                @include lsu-table-highlight-cell($lsu-color-4a2630, $lsu-color-fff1f3);
+                border-bottom: 1px solid $lsu-color-48414f !important;
             }
         }
     }
 }
 
+// Handle dark mode on either the page body itself or an ancestor.
 [data-bs-theme="dark"] #page-admin-tool-task-scheduledtasks,
 #page-admin-tool-task-scheduledtasks[data-bs-theme="dark"] {
     .table > tbody > tr {
         > th,
         > td {
-            border-bottom: 1px solid $lsu-table-border-dark !important;
+            border-bottom: 1px solid $lsu-color-48414f !important;
         }
     }
 }
 
+// Light mode: standard danger colors at rest and during hover.
 [data-bs-theme="light"] .table > tbody > tr {
     > th.table-danger,
     > td.table-danger,
     &:hover > th.table-danger,
     &:hover > td.table-danger {
-        @include lsu-table-highlight-cell($lsu-table-danger-light-bg, $lsu-table-danger-light-fg);
+        @include lsu-table-highlight-cell($lsu-color-f8d7da, $lsu-color-58151c);
     }
 }
