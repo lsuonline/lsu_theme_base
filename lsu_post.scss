@@ -1,0 +1,920 @@
+/* LIGHT MODE: applies to ordinary pages and explicit Bootstrap light mode. */
+:root,
+:root[data-bs-theme="light"],
+[data-bs-theme="light"] {
+    /* Typography and links. */
+    --mds-text-inverse: #ffffff;
+    --mds-text-danger-disabled: #b98d92;
+    --mds-text-danger: #99202e;
+    --mds-text-emphasis: #17101f;
+    --mds-text-muted: #53525d;
+    --mds-text-subtle: #41404a;
+    --mds-text-default: #23202a;
+    --mds-text-link-primary-disabled: #947ead;
+    --mds-text-link-primary-hover: #271145;
+    --mds-text-link-primary-default: #461d7c;
+    --mds-text-feedback-danger: #681d2a;
+    --mds-text-feedback-warning: #493400;
+    --mds-text-feedback-info: #17434e;
+    --mds-text-feedback-success: #19452d;
+    --mds-text-feedback-secondary: #30303b;
+    --mds-text-feedback-primary: #271145;
+
+    /* Focus rings. */
+    --mds-focus-danger: #99202e;
+    --mds-focus-default: #461d7c;
+
+    /* Borders. Subtle borders are decorative, not controls. */
+    --mds-border-subtle: #e1dce8;
+    --mds-border-default: #c8c0d1;
+    --mds-border-translucent: rgba(0, 0, 0, 0);
+    --mds-border-interactive-secondary-disabled: #ddd9e1;
+    --mds-border-interactive-secondary-active: #51485d;
+    --mds-border-interactive-secondary-hover: #6d6479;
+    --mds-border-interactive-secondary-default: #817689;
+    --mds-border-interactive-primary-disabled: #b8a4cd;
+    --mds-border-interactive-primary-active: #271145;
+    --mds-border-interactive-primary-hover: #37175f;
+    --mds-border-interactive-primary-default: #461d7c;
+    --mds-border-interactive-danger-disabled: #dba4ad;
+    --mds-border-interactive-danger-active: #6f1624;
+    --mds-border-interactive-danger-hover: #82202b;
+    --mds-border-interactive-danger-default: #99202e;
+    --mds-border-feedback-danger: #a33c4a;
+    --mds-border-feedback-warning: #a07600;
+    --mds-border-feedback-info: #247085;
+    --mds-border-feedback-success: #2c754b;
+    --mds-border-feedback-secondary: #807588;
+    --mds-border-feedback-primary: #704992;
+
+    /* Toggle switches. */
+    --mds-bg-switch-track-disabled: #e5e2e9;
+    --mds-bg-switch-track-hover: #71657d;
+    --mds-bg-switch-track-default: #82758d;
+    --mds-bg-switch-thumb-disabled: #b0a7b9;
+    --mds-bg-switch-thumb-hover: #ffffff;
+    --mds-bg-switch-thumb-default: #ffffff;
+
+    /* Surfaces and navigation. */
+    --mds-bg-surface-strong: #eeeaf3;
+    --mds-bg-surface-subtle: #f8f6fb;
+    --mds-bg-surface-default: #ffffff;
+    --mds-bg-nav-pill-selected: #e9e0f2;
+    --mds-bg-nav-pill-pressed: #dbcee9;
+    --mds-bg-nav-pill-hover: #f1eaf7;
+
+    /* Interactive component backgrounds. */
+    --mds-bg-interactive-secondary-disabled: #f1eff4;
+    --mds-bg-interactive-secondary-active: #d4cbdc;
+    --mds-bg-interactive-secondary-hover: #e4deeb;
+    --mds-bg-interactive-secondary-default: #ebe7f0;
+    --mds-bg-interactive-primary-disabled: #cab4de;
+    --mds-bg-interactive-primary-active: #1d0d33;
+    --mds-bg-interactive-primary-hover: #37175f;
+    --mds-bg-interactive-primary-default-light: #f0eaf6;
+    --mds-bg-interactive-primary-default: #271145;
+    --mds-bg-interactive-danger-disabled: #e6b8bd;
+    --mds-bg-interactive-danger-active: #67111b;
+    --mds-bg-interactive-danger-hover: #821927;
+    --mds-bg-interactive-danger-default-light: #fbecef;
+    --mds-bg-interactive-danger-default: #99202e;
+
+    /* Status and feedback backgrounds. Gold never uses white text. */
+    --mds-bg-feedback-warning-subtle: #f8e7a2;
+    --mds-bg-feedback-warning-light: #fff8d8;
+    --mds-bg-feedback-warning-default: #fdd023;
+    --mds-bg-feedback-success-subtle: #cce6d5;
+    --mds-bg-feedback-success-light: #eef7f1;
+    --mds-bg-feedback-success-default: #155330;
+    --mds-bg-feedback-secondary-subtle: #f4f2f6;
+    --mds-bg-feedback-secondary-dark: #34303b;
+    --mds-bg-feedback-secondary-default: #e8e3ed;
+    --mds-bg-feedback-primary-subtle: #dfd2ed;
+    --mds-bg-feedback-primary-light: #f4eff9;
+    --mds-bg-feedback-primary-default: #271145;
+    --mds-bg-feedback-info-subtle: #cee7ed;
+    --mds-bg-feedback-info-light: #edf7f9;
+    --mds-bg-feedback-info-default: #145669;
+    --mds-bg-feedback-danger-subtle: #f3d4d9;
+    --mds-bg-feedback-danger-light: #fceef0;
+    --mds-bg-feedback-danger-default: #99202e;
+
+    /* Moodle activity icons: distinctive, but cohesive and legible. */
+    --mds-activity-icon-resource-bg: #deeff2;
+    --mds-activity-icon-resource-icon: #124e60;
+    --mds-activity-icon-other-bg: #e8e3ed;
+    --mds-activity-icon-other-icon: #271145;
+    --mds-activity-icon-interactive-bg: #f7e0e3;
+    --mds-activity-icon-interactive-icon: #791d2c;
+    --mds-activity-icon-file-bg: #deeff2;
+    --mds-activity-icon-file-icon: #124e60;
+    --mds-activity-icon-communication-bg: #fff0d7;
+    --mds-activity-icon-communication-icon: #684400;
+    --mds-activity-icon-collaboration-bg: #e9def7;
+    --mds-activity-icon-collaboration-icon: #461d7c;
+    --mds-activity-icon-assessment-bg: #f6e0eb;
+    --mds-activity-icon-assessment-icon: #82234b;
+
+    /* Bootstrap runtime tokens (do not replace compiled Bootstrap rules). */
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #23202a;
+    --bs-emphasis-color: #17101f;
+    --bs-secondary-color: #53525d;
+    --bs-secondary-bg: #f8f6fb;
+    --bs-tertiary-bg: #eeeaf3;
+    --bs-border-color: #c8c0d1;
+    --bs-primary: #271145;
+    --bs-primary-rgb: 39, 17, 69;
+    --bs-link-color: #461d7c;
+    --bs-link-color-rgb: 70, 29, 124;
+    --bs-link-hover-color: #271145;
+    --bs-link-hover-color-rgb: 39, 17, 69;
+    --bs-warning: #fdd023;
+    --bs-warning-rgb: 253, 208, 35;
+    --bs-focus-ring-color: rgba(70, 29, 124, 0.8);
+}
+
+/* DARK MODE: mode-appropriate variants preserve legibility and LSU identity. */
+:root[data-bs-theme="dark"],
+[data-bs-theme="dark"] {
+    /* Typography and links. Dark purple would be unreadable here. */
+    --mds-text-inverse: #241a2c;
+    --mds-text-danger-disabled: #b98e97;
+    --mds-text-danger: #ffadb9;
+    --mds-text-emphasis: #ffffff;
+    --mds-text-muted: #cbbfd5;
+    --mds-text-subtle: #e5ddea;
+    --mds-text-default: #f4eff8;
+    --mds-text-link-primary-disabled: #a28fbc;
+    --mds-text-link-primary-hover: #f0e1ff;
+    --mds-text-link-primary-default: #dcc0ff;
+    --mds-text-feedback-danger: #ffd7de;
+    --mds-text-feedback-warning: #fce8a2;
+    --mds-text-feedback-info: #d2f1f7;
+    --mds-text-feedback-success: #d8f7e2;
+    --mds-text-feedback-secondary: #efedf3;
+    --mds-text-feedback-primary: #ede0ff;
+
+    /* Focus rings. */
+    --mds-focus-danger: #ffadb9;
+    --mds-focus-default: #e8ceff;
+
+    /* Borders. */
+    --mds-border-subtle: #52475b;
+    --mds-border-default: #6b6173;
+    --mds-border-translucent: rgba(255, 255, 255, 0);
+    --mds-border-interactive-secondary-disabled: #4c4453;
+    --mds-border-interactive-secondary-active: #c8bed1;
+    --mds-border-interactive-secondary-hover: #aea2b9;
+    --mds-border-interactive-secondary-default: #8d8198;
+    --mds-border-interactive-primary-disabled: #695679;
+    --mds-border-interactive-primary-active: #f1dcff;
+    --mds-border-interactive-primary-hover: #e9d3ff;
+    --mds-border-interactive-primary-default: #dcc0ff;
+    --mds-border-interactive-danger-disabled: #67454e;
+    --mds-border-interactive-danger-active: #ffd7de;
+    --mds-border-interactive-danger-hover: #ffc0cb;
+    --mds-border-interactive-danger-default: #ffadb9;
+    --mds-border-feedback-danger: #f3a0ae;
+    --mds-border-feedback-warning: #e6c45e;
+    --mds-border-feedback-info: #87c8d6;
+    --mds-border-feedback-success: #8ecfaa;
+    --mds-border-feedback-secondary: #b6aebe;
+    --mds-border-feedback-primary: #c7a5ed;
+
+    /* Toggle switches. */
+    --mds-bg-switch-track-disabled: #403747;
+    --mds-bg-switch-track-hover: #9c8eaa;
+    --mds-bg-switch-track-default: #82748f;
+    --mds-bg-switch-thumb-disabled: #77707c;
+    --mds-bg-switch-thumb-hover: #f8f2fb;
+    --mds-bg-switch-thumb-default: #f8f2fb;
+
+    /* Surfaces and navigation. */
+    --mds-bg-surface-strong: #352b3f;
+    --mds-bg-surface-subtle: #241b2b;
+    --mds-bg-surface-default: #19131f;
+    --mds-bg-nav-pill-selected: #3d304b;
+    --mds-bg-nav-pill-pressed: #4e3d5c;
+    --mds-bg-nav-pill-hover: #34283f;
+
+    /* Interactive component backgrounds. */
+    --mds-bg-interactive-secondary-disabled: #3c3442;
+    --mds-bg-interactive-secondary-active: #55475e;
+    --mds-bg-interactive-secondary-hover: #443a4c;
+    --mds-bg-interactive-secondary-default: #342b3c;
+    --mds-bg-interactive-primary-disabled: #685977;
+    --mds-bg-interactive-primary-active: #f0dfff;
+    --mds-bg-interactive-primary-hover: #e8d1ff;
+    --mds-bg-interactive-primary-default-light: #392649;
+    --mds-bg-interactive-primary-default: #dbc0fb;
+    --mds-bg-interactive-danger-disabled: #6b4650;
+    --mds-bg-interactive-danger-active: #ffd7df;
+    --mds-bg-interactive-danger-hover: #ffc4cf;
+    --mds-bg-interactive-danger-default-light: #42232d;
+    --mds-bg-interactive-danger-default: #ffb4be;
+
+    /* Status and feedback backgrounds. */
+    --mds-bg-feedback-warning-subtle: #534714;
+    --mds-bg-feedback-warning-light: #413714;
+    --mds-bg-feedback-warning-default: #fdd023;
+    --mds-bg-feedback-success-subtle: #294636;
+    --mds-bg-feedback-success-light: #1d382b;
+    --mds-bg-feedback-success-default: #97ddb1;
+    --mds-bg-feedback-secondary-subtle: #342a3b;
+    --mds-bg-feedback-secondary-dark: #b6acbf;
+    --mds-bg-feedback-secondary-default: #4d4255;
+    --mds-bg-feedback-primary-subtle: #493458;
+    --mds-bg-feedback-primary-light: #392649;
+    --mds-bg-feedback-primary-default: #dbc0fb;
+    --mds-bg-feedback-info-subtle: #274b58;
+    --mds-bg-feedback-info-light: #1c3b48;
+    --mds-bg-feedback-info-default: #95d8e5;
+    --mds-bg-feedback-danger-subtle: #572f3b;
+    --mds-bg-feedback-danger-light: #42232d;
+    --mds-bg-feedback-danger-default: #ffb4be;
+
+    /* Activity icon pairs. */
+    --mds-activity-icon-resource-bg: #244652;
+    --mds-activity-icon-resource-icon: #b1ebf2;
+    --mds-activity-icon-other-bg: #3c3344;
+    --mds-activity-icon-other-icon: #f5eafa;
+    --mds-activity-icon-interactive-bg: #4c2935;
+    --mds-activity-icon-interactive-icon: #ffd5df;
+    --mds-activity-icon-file-bg: #244652;
+    --mds-activity-icon-file-icon: #b1ebf2;
+    --mds-activity-icon-communication-bg: #4c3d21;
+    --mds-activity-icon-communication-icon: #ffdf91;
+    --mds-activity-icon-collaboration-bg: #413154;
+    --mds-activity-icon-collaboration-icon: #e2c9ff;
+    --mds-activity-icon-assessment-bg: #502c43;
+    --mds-activity-icon-assessment-icon: #ffd1e7;
+
+    /* Bootstrap runtime tokens matching the dark surface palette. */
+    --bs-body-bg: #19131f;
+    --bs-body-color: #f4eff8;
+    --bs-emphasis-color: #ffffff;
+    --bs-secondary-color: #cbbfd5;
+    --bs-secondary-bg: #241b2b;
+    --bs-tertiary-bg: #352b3f;
+    --bs-border-color: #6b6173;
+    --bs-primary: #dbc0fb;
+    --bs-primary-rgb: 219, 192, 251;
+    --bs-link-color: #dcc0ff;
+    --bs-link-color-rgb: 220, 192, 255;
+    --bs-link-hover-color: #f0e1ff;
+    --bs-link-hover-color-rgb: 240, 225, 255;
+    --bs-warning: #fdd023;
+    --bs-warning-rgb: 253, 208, 35;
+    --bs-focus-ring-color: rgba(232, 206, 255, 0.65);
+    --bu-navbar-bg: #271145;
+}
+
+/*
+ * YUI filemanager tables use the runtime palette in both light and dark mode.
+ * Load these overrides after Moodle's core styles using the theme's Raw SCSS.
+ */
+/* stylelint-disable declaration-no-important */
+.filemanager .yui3-datatable-header {
+    background: var(--mds-bg-surface-strong) !important;
+    border-bottom: 1px solid var(--mds-border-subtle) !important;
+    border-left: 0 solid var(--mds-border-subtle) !important;
+    color: var(--mds-text-emphasis) !important;
+}
+
+.filemanager .yui3-datatable-odd .yui3-datatable-cell,
+.filemanager .yui3-datatable-even .yui3-datatable-cell {
+    border-left: 0 solid var(--mds-border-subtle) !important;
+    color: var(--mds-text-default) !important;
+}
+
+.filemanager .yui3-datatable-odd .yui3-datatable-cell {
+    background-color: #e8e4ed !important;
+}
+
+.filemanager .yui3-datatable-even .yui3-datatable-cell {
+    background-color: var(--mds-bg-surface-default) !important;
+}
+/* Keep the original dark-mode row colors. */
+[data-bs-theme="dark"] .filemanager .yui3-datatable-odd .yui3-datatable-cell {
+    background-color: var(--mds-bg-surface-subtle) !important;
+}
+
+/* Dark glyphs remain legible on the existing pale toolbar buttons. */
+[data-bs-theme="dark"] .filemanager .fp-toolbar .btn .icon,
+[data-bs-theme="dark"] .filemanager .fp-viewbar .btn .icon {
+    color: var(--mds-text-inverse) !important;
+    filter: none !important;
+}
+
+[data-bs-theme="dark"] .filemanager .fp-thumbnail img,
+[data-bs-theme="dark"] .filemanager .fp-icon img {
+    border: none;
+    filter: invert(1);
+}
+
+[data-bs-theme="dark"] .filemanager .fp-thumbnail img.realpreview,
+[data-bs-theme="dark"] .filemanager .fp-icon img.realpreview {
+    filter: none !important;
+    border: none;
+}
+
+/* stylelint-enable declaration-no-important */
+
+[data-bs-theme="dark"] .text-dark {
+    color: var(--mds-text-subtle) !important;
+}
+
+[data-bs-theme="dark"] .modchoosercontent .optionscontainer .option.selected {
+    background-color: var(--bu-navbar-bg);
+}
+
+[data-bs-theme="dark"] .navbar.bg-dark,
+[data-bs-theme="dark"] .navbar.bg-primary {
+--bu-navbar-bg: #201330 !important;
+}
+
+// Force remove background shifts and borders on click/focus for block menus.
+.block *:active,
+ .block *:focus {
+    background-color: inherit !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+// Deal with course radii.
+.course-section .section-item .course-content-item-content .section-content-inner {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+// Badges in dark mode snippets area.
+[data-bs-theme="dark"] {
+    #page-admin-theme-boost_union-snippets-overview span.badge.bg-primary.text-light {
+        background-color: var(--bs-light-bg-subtle) !important;
+    }
+}
+
+[data-bs-theme="dark"] #page-header a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] #region-main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] #page-footer a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link),
+[data-bs-theme="dark"] .block_html .card-text a:not(.btn):not(.nav-link):not(.dropdown-item):not(.list-group-item):not(.page-link) {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
+[data-bs-theme="light"] #course-index .courseindex-item[data-for="cm"] {
+    &:hover {
+        background-color: var(--bs-tertiary-bg);
+    }
+}
+
+[data-bs-theme="dark"] #course-index .courseindex-item[data-for="cm"],
+[data-bs-theme="dark"] #settingsnav .block_tree .tree_item {
+    &:hover {
+        background-color: var(--bs-secondary-bg);
+    }
+}
+
+[data-bs-theme="light"] .drawer.drawer-left,
+[data-bs-theme="light"] .drawer.drawer-right {
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+[data-bs-theme="light"] .drawer.drawer-right .card {
+    background-color: var(--bs-gray-100);
+}
+
+.drawer .drawerheader .draweractions .btn {
+    background-color: unset;
+}
+
+[data-bs-theme="light"] .drawer.drawer-right .card .tree-item,
+[data-bs-theme="light"] #settingsnav .block_tree .tree_item {
+    &:hover {
+        background-color: var(--bs-body-bg) !important;
+    }
+}
+
+[data-bs-theme="dark"] {
+    .fa,
+    .fas,
+    .far,
+    .fal,
+    .fab,
+    .fad,
+    .fat,
+    .fa-solid,
+    .fa-regular,
+    .fa-light,
+    .fa-brands,
+    .svg-inline--fa {
+        color: var(--bs-body-color) !important;
+    }
+}
+
+// Make activity and course index SVG icons white in dark mode.
+
+[data-bs-theme="dark"] {
+
+    // Activity icons in course content.
+    .activityiconcontainer img.activityicon,
+
+    // Activity icons in the course index (sidebar).
+    .courseindex-cmicon-icon img.icon {
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+/**
+ * Snippet Title: LSU Gradebook rows and contiguous category levels
+ * Scope:         global
+ * Goal:          easeofuse
+ * Description:   Striped rows, seamless category bands, and coordinated item headers.
+ * Creator:       Robert Russo
+ * Tested on:     Moodle 4.5.4, Safari for mac, Firefox for mac, Chrome for mac.
+ * Target:        Moodle 5.3 / Boost Union (category level enhancements).
+ *
+ * @copyright     2026 Robert Russo
+ * @author        Robert Russo <rrusso@lsu.edu>
+ * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+//Global fixes becuase I wrote something 20 years ago and the world forgot about it.
+.path-grade .table th.category,
+.path-grade-report-singleview .table tbody td,
+.path-grade-report-singleview .table tbody th,
+.path-grade-report-singleview .table .category,
+.path-grade-report-singleview div.reporttable,
+.path-grade-report-user .user-grade thead th,
+.grade-report-user .user-grade thead th,
+.path-grade-report-user .user-grade td.item,
+.grade-report-user .user-grade td.item,
+.path-grade-report-user .user-report-container,
+.grade-report-user .user-report-container,
+.path-grade-report-user .user-grade tbody tr,
+.grade-report-user .user-grade tbody tr,
+.path-grade-report-user .user-grade th.column-itemname,
+.grade-report-user .user-grade th.column-itemname,
+.path-grade-report-user .user-grade td,
+.grade-report-user .user-grade td,
+.path-grade-report-user .user-grade:not(.nevertides) {
+        background-color: inherit !important;
+        border-top: inherit !important;
+        border-bottom: inherit !important;
+}
+
+.path-grade-report-singleview .reporttable tbody tr,
+.path-grade-report-singleview .reporttable tbody tr:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+    border-top: inherit !important;
+    border-bottom: inherit !important;
+}
+
+// Remove specified grade report table hover backgrounds.
+:is(.path-grade,
+    .path-grade-report-singleview,
+    .path-grade-report-user,
+    .grade-report-user) {
+
+    // Disable Bootstrap table hover coloring.
+    .table {
+        --bs-table-hover-bg: transparent !important;
+    }
+
+    // Remove hover backgrounds from rows and cells.
+    .table tbody tr:not(.heading):hover,
+    .table tbody tr:not(.heading):hover > td,
+    .table tbody tr:not(.heading):hover > th,
+    .user-grade tbody tr:hover,
+    .user-grade tbody tr:hover > td,
+    .user-grade tbody tr:hover > th {
+        background-color: inherit !important;
+    }
+
+    // Override Bootstrap 5.3's hover overlay.
+    .table-hover > tbody > tr:not(.heading):hover > * {
+        --bs-table-bg-state: transparent !important;
+    }
+}
+
+
+// Light mode changes.
+[data-bs-theme="light"] {
+    // Lighter rows for the odds.
+    .path-grade .gradereport-grader-table tbody tr.odd th,
+    .path-grade .gradereport-grader-table tbody tr.odd td,
+    .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
+        background-color: lighten($gray-100, 3%) !important;
+    }
+
+    // Darker rows for the evens.
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
+    .path-grade .generaltable tbody tr:not(.heading):hover {
+         background-color: $gray-100 !important;
+    }
+
+    #page-grade-report-grade_breakdown-index .lastrow {
+         background-color: inherit !important;
+   }
+}
+
+//Dark mode changes.
+[data-bs-theme="dark"] {
+    // Lighter rows for the odds.
+    .path-grade .gradereport-grader-table tbody tr.odd th,
+    .path-grade .gradereport-grader-table tbody tr.odd td,
+    .path-grade .generaltable tbody tr:not(.heading):nth-of-type(odd) {
+        background-color: lighten($gray-900, 3%) !important;
+    }
+
+    // Darker rows for the evens.
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover th,
+    .path-grade .gradereport-grader-table tbody tr.userrow:hover td,
+    .path-grade .generaltable tbody tr:not(.heading):hover {
+         background-color: $gray-900 !important;
+    }
+
+    #page-grade-report-grade_breakdown-index .lastrow {
+         background-color: inherit !important;
+   }
+}
+
+// Use slightly deeper but still restrained LSU purple / gold-inspired tints.
+
+$lsu-category-light-odd:  (#f1edf5, #f3eff7, #f5f2f9, #f7f4fa);
+$lsu-category-light-even: (#f8f5ea, #f9f7ef, #faf8f2, #fcfaf6);
+$lsu-category-dark-odd:   (#322b38, #302a36, #2e2933, #2c2731);
+$lsu-category-dark-even:  (#342f28, #322d27, #302c26, #2e2a25);
+
+.path-grade .gradereport-grader-table {
+
+    // Category and filler cells: one seamless tinted region per level.
+    tr:not(.heading) > :is(
+        th.category,
+        td.filler,
+        td.fillerfirst,
+        td.fillerlast
+    ).cell[class*="catlevel"] {
+        background-color: var(--lsu-category-bg) !important;
+        background-image: none !important;
+        background-clip: border-box;
+
+        --bs-table-bg: var(--lsu-category-bg);
+        --bs-table-bg-state: transparent;
+        --bs-table-bg-type: transparent;
+        --bs-table-accent-bg: transparent;
+        --bs-border-color: var(--lsu-category-bg);
+        --bs-table-border-color: var(--lsu-category-bg);
+
+        // Match borders to the tint. No outlines or inset shadows.
+        border: 1px solid var(--lsu-category-bg) !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    // Grade-item cells ONLY; do not change the heading row's structural cells.
+    tr.heading > th:is(.item, .categoryitem, .courseitem).cell[class*="catlevel"] {
+        background-color: var(--lsu-category-bg) !important;
+        background-image: none !important;
+
+        --bs-table-bg: var(--lsu-category-bg);
+        --bs-table-bg-state: transparent;
+        --bs-table-bg-type: transparent;
+        --bs-table-accent-bg: transparent;
+
+        // Text-only accent on the grade item title (not the entire TH).
+        .gradeitemheader {
+            color: var(--lsu-grade-item-title) !important;
+        }
+    }
+}
+
+// The same catlevel token colors both its category band and grade-item title cell.
+@for $level from 1 through 24 {
+    $shade: ceil($level * 0.5);
+    @if $shade > 4 {
+        $shade: 4;
+    }
+
+    @if $level % 2 == 1 {
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-light-odd, $shade)};
+            --lsu-grade-item-title: #271145;
+        }
+
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-dark-odd, $shade)};
+            --lsu-grade-item-title: #f1eaf8;
+        }
+    } @else {
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="light"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-light-even, $shade)};
+            --lsu-grade-item-title: #292723;
+        }
+
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr:not(.heading) > :is(th.category, td.filler, td.fillerfirst, td.fillerlast).cell.catlevel#{$level},
+        [data-bs-theme="dark"] .path-grade .gradereport-grader-table
+        tr.heading > th:is(.item, .categoryitem, .courseitem).cell.catlevel#{$level} {
+            --lsu-category-bg: #{nth($lsu-category-dark-even, $shade)};
+            --lsu-grade-item-title: #f4f0e8;
+        }
+    }
+}
+
+// Modernized Course and Site Administration tree.
+#settingsnav {
+
+    // Remove unnecessary padding around the tree.
+    &.block_tree_box {
+        padding: 0.25rem 0 !important;
+    }
+
+    .block_tree {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        // Reset nested tree indentation.
+        ul {
+            margin: 0 !important;
+            padding-left: 0.85rem !important;
+            list-style: none;
+        }
+
+        > li {
+            padding-left: 0 !important;
+        }
+
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        // Individual menu items.
+        .tree_item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 2rem;
+            margin: 0.1rem 0 !important;
+            padding: 0.35rem 0.5rem 0.35rem 1.5rem !important;
+            border-radius: 0.35rem;
+            background: transparent;
+            transition: background-color 0.15s ease;
+
+            // Links and labels.
+            > a,
+            > span {
+                color: inherit;
+                text-decoration: none;
+                line-height: 1.4;
+            }
+
+            // Keyboard accessibility.
+            &:focus-within {
+                outline: 2px solid var(--bs-primary);
+                outline-offset: -2px;
+            }
+        }
+
+        // Remove Moodle's existing expand/collapse triangles.
+        .tree_item.branch {
+            background-image: none !important;
+
+            &::before {
+                content: none !important;
+            }
+        }
+
+        // New chevron for expandable branches.
+        li.contains_branch > .tree_item.branch::before {
+            content: "" !important;
+            display: block;
+            position: absolute;
+            left: 0.45rem;
+            top: 50%;
+            width: 0.4rem;
+            height: 0.4rem;
+            border-right: 1.75px solid currentColor;
+            border-bottom: 1.75px solid currentColor;
+            transform: translateY(-65%) rotate(-45deg);
+            transition: transform 0.15s ease;
+            opacity: 0.75;
+        }
+
+        // Expanded state: chevron points down.
+        li.contains_branch[aria-expanded="true"]
+            > .tree_item.branch::before {
+            transform: translateY(-75%) rotate(45deg);
+        }
+
+        // Leaf items do not have expand/collapse controls.
+        .tree_item.leaf::before {
+            content: none !important;
+        }
+
+        // Font Awesome menu icons.
+        .navicon {
+            margin-right: 0.4rem;
+            opacity: 0.8;
+            flex-shrink: 0;
+        }
+
+        // Root menu headings.
+        > li.depth_1 > .tree_item.root_node {
+            font-weight: 600;
+            padding-top: 0.55rem !important;
+            padding-bottom: 0.55rem !important;
+        }
+
+        // Cleaner separator between root sections.
+        > li.depth_1 > hr {
+            margin: 0.65rem 0;
+            opacity: 0.15;
+        }
+    }
+}
+
+/* LSU administration keyboard focus colors. */
+/* Light mode. */
+html[data-bs-theme="light"] #settingsnav {
+    --lsu-focus: #fff2b3;
+}
+
+/* Dark mode. */
+html[data-bs-theme="dark"] #settingsnav {
+    --lsu-focus: #461d7c;
+}
+
+/* Apply to the menu item AND its focused link. */
+#settingsnav .block_tree {
+
+    .tree_item:focus-within,
+    .tree_item > a:focus,
+    .tree_item > a:focus-visible {
+        outline: 2px solid var(--lsu-focus, #fff2b3) !important;
+        outline-offset: -2px !important;
+        box-shadow: none !important;
+    }
+}
+
+@keyframes jiggle {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-10deg); }
+    40%  { transform: rotate(10deg); }
+    60%  { transform: rotate(-8deg); }
+    80%  { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+}
+
+#usernavigation .nav-link:hover .icon {
+    color: #FDD023 !important;
+    animation: jiggle 0.4s ease-in-out;
+    transform-origin: center;
+}
+
+// Size the outer dialog and keep it centred.
+.modal-dialog.modchooser[data-region="modal"] {
+    width: 80vw !important;
+    max-width: 80vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+// The site's stylesheet also applies max-width: 500px.
+.modal-dialog.modchooser[data-region="modal"] > .modal-content {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: left;
+}
+
+// Shared cell treatment; interpolation supports Moodle's SCSS compiler.
+@mixin lsu-table-highlight-cell($background, $foreground) {
+    --bs-table-bg: #{$background};
+    --bs-table-color: #{$foreground};
+    --bs-table-hover-bg: #{$background};
+    --bs-table-hover-color: #{$foreground};
+    --bs-table-accent-bg: transparent;
+    --bs-table-bg-type: #{$background};
+    --bs-table-bg-state: #{$background};
+    --bs-table-color-type: #{$foreground};
+    --bs-table-color-state: #{$foreground};
+
+    background-color: $background !important;
+    color: $foreground !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme="dark"] {
+    .table {
+        // Primary rows remain highlighted at rest and on hover.
+        tr.table-primary {
+            > th,
+            > td {
+                @include lsu-table-highlight-cell(#342b40, #f5f3f7);
+            }
+
+            a:not(.btn),
+            a.btn-link {
+                text-decoration: underline;
+                text-underline-offset: 0.15em;
+            }
+        }
+
+        // Exclude danger cells so their warning highlight always wins.
+        tbody tr:not(.table-primary):hover {
+            > th:not(.table-danger),
+            > td:not(.table-danger) {
+                @include lsu-table-highlight-cell(#292330, #f5f3f7);
+            }
+        }
+
+        // Shared secondary text and links for the two dark row treatments.
+        tr.table-primary,
+        tbody tr:not(.table-primary):hover {
+            .task-class,
+            .text-muted {
+                color: #d1cbd8 !important;
+                opacity: 1;
+            }
+
+            a:not(.btn),
+            a.btn-link {
+                color: #e0d0f5 !important;
+
+                .icon {
+                    color: inherit !important;
+                }
+
+                &:hover,
+                &:focus-visible {
+                    color: #ffffff !important;
+                    text-decoration: underline;
+                    text-underline-offset: 0.15em;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid #e0d0f5 !important;
+                    outline-offset: 2px;
+                }
+            }
+        }
+
+        // Persistent danger cells, including inside primary or hovered rows.
+        > tbody > tr {
+            > th.table-danger,
+            > td.table-danger,
+            &:hover > th.table-danger,
+            &:hover > td.table-danger {
+                @include lsu-table-highlight-cell(#4a2630, #fff1f3);
+                border-bottom: 1px solid #48414f !important;
+            }
+        }
+    }
+}
+
+// Handle dark mode on either the page body itself or an ancestor.
+[data-bs-theme="dark"] #page-admin-tool-task-scheduledtasks,
+#page-admin-tool-task-scheduledtasks[data-bs-theme="dark"] {
+    .table > tbody > tr {
+        > th,
+        > td {
+            border-bottom: 1px solid #48414f !important;
+        }
+    }
+}
+
+// Light mode: standard danger colors at rest and during hover.
+[data-bs-theme="light"] .table > tbody > tr {
+    > th.table-danger,
+    > td.table-danger,
+    &:hover > th.table-danger,
+    &:hover > td.table-danger {
+        @include lsu-table-highlight-cell(#f8d7da, #58151c);
+    }
+}
+
+// Force drawer toggle buttons to the top on mobile viewports (< 768px)
+@include media-breakpoint-down(md) {
+    .drawer-toggles .drawer-toggler {
+        top: calc(#{$navbar-height} + 0.7rem);
+        bottom: auto;
+    }
+}
