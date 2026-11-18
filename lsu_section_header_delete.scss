@@ -1,0 +1,13 @@
+/**
+ * Snippet Title: LSU section header delete
+ * Scope: course
+ * Goal: eyecandy
+ * Description: Delete teh section course image.
+ * @copyright 2026 Robert Russo
+ * @copyright 2026 Louisiana State University
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ */
+
+.single-section-page #courseheaderimage {
+    display: none !important;
+}
