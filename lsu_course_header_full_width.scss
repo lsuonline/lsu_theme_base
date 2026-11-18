@@ -1,163 +1,346 @@
 /**
- * Snippet Title: LSU full-width course header
+ * Snippet Title: LSU full-width course header that scrolls V4
  * Scope: course
  * Goal: eyecandy
- * Description: Show a full-width course image with optional scroll collapse.
+ * Description: A scrolling course banner with sticky desktop drawers.
  * @copyright 2026 Robert Russo
  * @copyright 2026 Louisiana State University
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
-@media screen {
-    #bucourseheader #courseheaderimage {
-        border-bottom: 1px solid var(--bu-navbar-bg) !important;
-    }
-
-    [data-bs-theme="dark"] #bucourseheader #courseheaderimage {
-        border-bottom: 1px solid #fff !important;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) {
-        /* Navbar height matches the supplied Boost Union stylesheet. */
-        --lsu-navbar-height: 60px;
-        --lsu-banner-expanded-height: 200px;
-        --lsu-banner-height: var(--lsu-banner-expanded-height);
-        --lsu-banner-top: calc(var(--lsu-navbar-height) + var(--bu-smartmenu-menubar-height, 0px));
-        --lsu-banner-bottom: calc(var(--lsu-banner-top) + var(--lsu-banner-height));
-        --lsu-drawer-top: calc(var(--lsu-banner-bottom) + 1rem);
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #courseheaderimage {
-        position: fixed;
-        top: var(--lsu-banner-top);
-        right: 0;
-        left: 0;
-        z-index: 1010;
-        box-sizing: border-box;
-        width: auto !important;
-        max-width: none !important;
-        height: var(--lsu-banner-height) !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        background-size: cover;
-        overflow-y: auto;
-        transition: height 200ms ease, padding 200ms ease;
-    }
-
-    /* Keep the existing course contacts and image controls on the banner. */
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader .courseheadericonsbar {
-        position: fixed;
-        top: calc(var(--lsu-banner-top) + 0.75rem);
-        right: 1rem;
-        left: auto;
-        z-index: 1011;
-        margin: 0 !important;
-        max-width: calc(100% - 2rem);
-    }
-
-    /* Keep the reserved space stable so collapsing cannot change scroll position. */
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #page.drawers {
-        margin-top: calc(var(--lsu-banner-top) + var(--lsu-banner-expanded-height)) !important;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
-        top: var(--lsu-drawer-top) !important;
-        height: calc(100dvh - var(--lsu-drawer-top) - 1rem - var(--sticky-footer-total-height, 0px)) !important;
-        max-height: calc(100dvh - var(--lsu-drawer-top) - 1rem - var(--sticky-footer-total-height, 0px)) !important;
-        transition: top 200ms ease, height 200ms ease, max-height 200ms ease,
-            left 200ms ease, right 200ms ease, transform 200ms ease;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) .drawer-toggles .drawer-toggler {
-        top: var(--lsu-drawer-top) !important;
-        bottom: auto !important;
-        transition: top 200ms ease, left 200ms ease, right 200ms ease, transform 200ms ease;
-    }
-
-    body.path-course-view.lsu-course-header-collapsed:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) {
-        --lsu-banner-height: calc(var(--lsu-banner-expanded-height) / 2);
-    }
-
-    body.path-course-view.lsu-course-header-collapsed:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #courseheaderimage {
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
-    }
-
-    body.path-course-view.lsu-course-header-collapsed:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #courseheaderimage .page-context-header {
-        margin-bottom: 0 !important;
-    }
-}
-
-@media screen and (max-width: 767.98px) {
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) {
-        --lsu-banner-expanded-height: 140px;
-    }
-}
-
-@media screen and (max-height: 500px) {
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) {
-        --lsu-banner-expanded-height: 100px;
-    }
-}
-
-/* Keep the title, contacts and progress readable on compact screens. */
-@media screen and (max-width: 767.98px), screen and (max-height: 500px) {
-    body.path-course-view.lsu-course-header-collapsed:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) {
-        --lsu-banner-height: max(100px, calc(var(--lsu-banner-expanded-height) / 2));
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage {
-        padding: 0.5rem 1rem !important;
-        gap: 0.25rem;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage .bucoursetitle {
-        width: calc(100% - 3rem);
-        min-width: 0;
-        flex-shrink: 0;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage .bucoursetitle :is(.d-flex, .page-header-headings) {
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage .page-context-header {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage .page-header-headings h1 {
-        font-size: 1.25rem;
-        line-height: 1.15;
-        overflow-wrap: anywhere;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage > .mt-auto {
-        flex-shrink: 0;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader #courseheaderimage .courseheadersticker {
-        margin-left: 0 !important;
-        margin-right: auto !important;
-    }
-
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) #bucourseheader .courseheadericonsbar {
-        top: calc(var(--lsu-banner-top) + 0.5rem);
-    }
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage) :is(#courseheaderimage, #theme_boost-drawers-courseindex, #theme_boost-drawers-blocks, .drawer-toggles .drawer-toggler) {
-        transition: none !important;
-    }
-}
-
 .single-section-page #courseheaderimage {
     display: none !important;
+}
+
+@media screen {
+    body.path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage):has(#page > .main-inner-wrapper.main-inner-outside-none) {
+        --lsu-navbar-bottom: calc(#{$navbar-height} + var(--bu-smartmenu-menubar-height, 0px) + 1px);
+        --lsu-sticky-top: calc(var(--lsu-navbar-bottom) + 1rem);
+        --lsu-left-drawer-width: #{$drawer-left-width};
+        --lsu-right-drawer-width: #{$drawer-right-width};
+        --lsu-index-track: 3rem;
+        --lsu-block-track: 3rem;
+        --lsu-banner-col-start: 1;
+        --lsu-banner-col-end: 4;
+        --lsu-banner-min-height: 200px;
+        --lsu-banner-toggle-clearance: 3.5rem;
+
+        /* Shared tracks keep the existing Moodle elements and IDs intact. */
+        #page-wrapper {
+            display: grid;
+            grid-template-columns: var(--lsu-index-track) minmax(0, 1fr) var(--lsu-block-track);
+            grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+            column-gap: 1rem;
+            align-items: start;
+            height: auto;
+            min-height: 100dvh;
+            padding-top: var(--lsu-navbar-bottom);
+            overflow: visible;
+        }
+
+        #page.drawers,
+        #page > .main-inner-wrapper,
+        #topofscroll.main-inner {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-template-rows: subgrid;
+            align-self: stretch;
+            min-width: 0;
+            width: 100%;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0;
+        }
+
+        #page.drawers {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-row-end: 6;
+            grid-column-end: 4;
+        }
+
+        #page > .main-inner-wrapper,
+        #topofscroll.main-inner {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-row-end: 5;
+            grid-column-end: 4;
+        }
+
+        #page-wrapper > div:has(> a.visually-hidden-focusable) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1040;
+        }
+
+        #page-header {
+            grid-row-start: 1;
+            grid-column-start: var(--lsu-banner-col-start);
+            grid-row-end: 2;
+            grid-column-end: var(--lsu-banner-col-end);
+            position: static;
+            width: 100%;
+            max-width: none;
+            margin: 0 0 1rem;
+            padding: 0;
+        }
+
+        #bucourseheader {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            margin: 0 !important;
+        }
+
+        #bucourseheader > .d-flex:has(> .header-actions-container) {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            padding-bottom: 0 !important;
+        }
+
+        #bucourseheader > .d-flex:has(> .header-actions-container:empty) {
+            display: none !important;
+        }
+
+        #bucourseheader #courseheaderimage {
+            grid-row-start: 2;
+            grid-column-start: 1;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            position: static;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 0;
+            height: auto;
+            min-height: var(--lsu-banner-min-height) !important;
+            margin: 0;
+            border-radius: 0 !important;
+            border-bottom: 1px solid var(--lsu-banner-border-color, var(--bu-navbar-bg)) !important;
+            background-size: cover;
+            overflow: visible;
+        }
+
+        #bucourseheader .courseheadericonsbar {
+            grid-row-start: 2;
+            grid-column-start: 1;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            position: relative;
+            inset: auto;
+            z-index: 1;
+            align-self: start;
+            justify-self: end;
+            margin: 0.75rem 1rem 0 !important;
+            max-width: calc(100% - 2rem);
+        }
+
+        // Keep the title and header icons clear of closed-drawer toggle buttons.
+        &:not(:has(#theme_boost-drawers-courseindex.show)) {
+            #bucourseheader #courseheaderimage .bucoursetitle {
+                margin-inline-start: var(--lsu-banner-toggle-clearance) !important;
+                max-width: calc(100% - var(--lsu-banner-toggle-clearance));
+            }
+        }
+
+        &:not(:has(#theme_boost-drawers-blocks.show)) {
+            #bucourseheader .courseheadericonsbar {
+                margin-inline-end: var(--lsu-banner-toggle-clearance) !important;
+                max-width: calc(100% - var(--lsu-banner-toggle-clearance) - 1rem);
+            }
+        }
+
+        .secondary-navigation {
+            grid-row-start: 2;
+            grid-column-start: 2;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            min-width: 0;
+            margin: 0 0 1rem;
+        }
+
+        #user-notifications {
+            grid-row-start: 3;
+            grid-column-start: 2;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            min-width: 0;
+        }
+
+        #page-content {
+            grid-row-start: 4;
+            grid-column-start: 2;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            min-width: 0;
+        }
+
+        #page-footer {
+            grid-row-start: 5;
+            grid-column-start: 2;
+            grid-row-end: auto;
+            grid-column-end: auto;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .drawer-toggles {
+            display: contents !important;
+        }
+
+        .drawer-toggles .drawer-toggler {
+            position: fixed !important;
+            top: var(--lsu-sticky-top) !important;
+            bottom: auto !important;
+            z-index: 3;
+            transform: none !important;
+            visibility: visible !important;
+            transition: none;
+        }
+
+        .drawer-toggles .drawer-left-toggle {
+            left: 0 !important;
+            right: auto !important;
+
+            .btn-icon {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        .drawer-toggles .drawer-right-toggle {
+            right: 0 !important;
+            left: auto !important;
+
+            .btn-icon {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        .drawer-toggles .drawer-toggler .btn {
+            margin: 0;
+        }
+
+        @media (min-width: 992px) {
+            &:has(#theme_boost-drawers-courseindex.show) {
+                --lsu-index-track: var(--lsu-left-drawer-width);
+                --lsu-banner-col-start: 2;
+            }
+
+            &:has(#theme_boost-drawers-blocks.show) {
+                --lsu-block-track: var(--lsu-right-drawer-width);
+                --lsu-banner-col-end: 3;
+            }
+
+            :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+                position: fixed !important;
+                top: var(--lsu-navbar-bottom) !important;
+                bottom: auto !important;
+                align-self: start;
+                min-width: 0;
+                min-height: 0;
+                height: calc(100dvh - var(--lsu-navbar-bottom) - var(--sticky-footer-total-height, 0px)) !important;
+                max-height: none !important;
+                border-radius: 0 !important;
+                z-index: 2;
+                clip-path: none !important;
+                transform: none !important;
+            }
+
+            #theme_boost-drawers-courseindex {
+                left: 0 !important;
+                right: auto !important;
+                width: var(--lsu-left-drawer-width) !important;
+                max-width: var(--lsu-left-drawer-width) !important;
+            }
+
+            #theme_boost-drawers-blocks {
+                right: 0 !important;
+                left: auto !important;
+                width: var(--lsu-right-drawer-width) !important;
+                max-width: var(--lsu-right-drawer-width) !important;
+            }
+
+            :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks):not(.show) {
+                display: none !important;
+            }
+        }
+
+        /* Mobile drawers overlay the course instead of consuming columns. */
+        @media (max-width: 991.98px) {
+            --lsu-index-track: 0px;
+            --lsu-block-track: 0px;
+            --lsu-banner-min-height: 140px;
+
+            #page-wrapper {
+                column-gap: 0;
+            }
+
+            #page-content,
+            #user-notifications {
+                padding-inline: 0.5rem;
+            }
+
+            .secondary-navigation {
+                min-height: 40px;
+                padding-inline: 3.5rem;
+            }
+
+            .drawer-toggles .drawer-toggler {
+                margin-inline: 0;
+            }
+
+            :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+                position: fixed;
+                top: var(--lsu-navbar-bottom) !important;
+                height: calc(100dvh - var(--lsu-navbar-bottom)) !important;
+                max-height: calc(100dvh - var(--lsu-navbar-bottom)) !important;
+                max-width: calc(100vw - 1rem) !important;
+                z-index: 1021;
+            }
+
+            #bucourseheader #courseheaderimage {
+                padding: 0.75rem 1rem !important;
+                gap: 0.5rem;
+            }
+
+            #courseheaderimage .bucoursetitle {
+                padding-right: 3rem;
+                min-width: 0;
+            }
+
+            #courseheaderimage .bucoursetitle :is(.d-flex, .page-header-headings) {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            #courseheaderimage .page-context-header {
+                padding: 0;
+                margin: 0 !important;
+            }
+
+            #courseheaderimage .page-header-headings h1 {
+                font-size: 1.25rem;
+                line-height: 1.2;
+                overflow-wrap: anywhere;
+            }
+
+            #courseheaderimage > .mt-auto {
+                flex-shrink: 0;
+            }
+
+            #courseheaderimage .courseheadersticker {
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+        }
+    }
+
+    [data-bs-theme="dark"] body.path-course-view #bucourseheader #courseheaderimage,
+    body.path-course-view[data-bs-theme="dark"] #bucourseheader #courseheaderimage {
+        --lsu-banner-border-color: #fff;
+    }
 }

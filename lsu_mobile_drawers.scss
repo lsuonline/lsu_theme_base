@@ -6,15 +6,89 @@
  * Creator:       Robert Russo
  * Tested on:     Moodle 5.3, IOS.
  *
+ * @copyright     2026 Louisiana State University
  * @copyright     2026 Robert Russo
- * @author        Robert Russo <rrusso@lsu.edu>
  * @license       http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// Force drawer toggle buttons to the top on mobile viewports (< 768px)
-@include media-breakpoint-down(md) {
+// Align either Moodle drawer (including dashboard blocks) under the navbar.
+body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+    --lsu-drawer-navbar-bottom: calc(#{$navbar-height} + var(--bu-smartmenu-menubar-height, 0px) + 1px);
+
     .drawer-toggles .drawer-toggler {
-        top: calc(#{$navbar-height} + 0.7rem);
-        bottom: auto;
+        position: fixed !important;
+        top: calc(var(--lsu-drawer-navbar-bottom) + 1rem) !important;
+        bottom: auto !important;
+    }
+
+    .drawer-toggles .drawer-toggler .btn {
+        margin: 0;
+    }
+
+    .drawer-toggles .drawer-left-toggle {
+        left: 0 !important;
+        right: auto !important;
+
+        .btn-icon {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    .drawer-toggles .drawer-right-toggle {
+        right: 0 !important;
+        left: auto !important;
+
+        .btn-icon {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+        :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+            position: fixed !important;
+            top: var(--lsu-drawer-navbar-bottom) !important;
+            bottom: auto !important;
+            height: calc(100dvh - var(--lsu-drawer-navbar-bottom) - var(--sticky-footer-total-height, 0px)) !important;
+            max-height: none !important;
+            border-radius: 0 !important;
+            clip-path: none !important;
+        }
+
+        #theme_boost-drawers-courseindex {
+            left: calc(-#{$drawer-left-width} - 10px) !important;
+            right: auto !important;
+            width: $drawer-left-width !important;
+            max-width: $drawer-left-width !important;
+
+            &.show {
+                left: 0 !important;
+            }
+        }
+
+        #theme_boost-drawers-blocks {
+            right: calc(-#{$drawer-right-width} - 10px) !important;
+            left: auto !important;
+            width: $drawer-right-width !important;
+            max-width: $drawer-right-width !important;
+
+            &.show {
+                right: 0 !important;
+            }
+        }
+
+        // Preserve the correct content offset when the drawers are open.
+        #page.drawers.show-drawer-left {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        #page.drawers.show-drawer-right {
+            margin-right: 0 !important;
+            padding-right: 0 !important;
+        }
     }
 }
