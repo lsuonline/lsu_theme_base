@@ -134,6 +134,14 @@ $lsu-category-light-even: (#f8f5ea, #f9f7ef, #faf8f2, #fcfaf6);
 $lsu-category-dark-odd:   (#322b38, #302a36, #2e2933, #2c2731);
 $lsu-category-dark-even:  (#342f28, #322d27, #302c26, #2e2a25);
 
+.path-grade-edit .table .category {
+    background-color: unset !important;
+}
+
+.path-grade .sorticon {
+    padding-left: 0.25rem;
+}
+
 .path-grade .gradereport-grader-table {
     // Category and filler cells: one seamless tinted region per level.
     tr:not(.heading) > :is(
