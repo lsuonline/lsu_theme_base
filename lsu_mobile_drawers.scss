@@ -46,6 +46,17 @@ body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
     }
 }
 
+// Keep mobile drawer toggles visible when scrolling.
+@include media-breakpoint-down(md) {
+    body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
+        #page.drawers.scroll-down .drawer-toggles .drawer-toggler {
+            transform: none !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+    }
+}
+
 @include media-breakpoint-up(lg) {
     body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
         :is(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
@@ -82,13 +93,36 @@ body:has(#theme_boost-drawers-courseindex, #theme_boost-drawers-blocks) {
 
         // Preserve the correct content offset when the drawers are open.
         #page.drawers.show-drawer-left {
-            margin-left: 0 !important;
+            margin-left: $drawer-left-width !important;
             padding-left: 0 !important;
         }
 
         #page.drawers.show-drawer-right {
-            margin-right: 0 !important;
+            margin-right: $drawer-right-width !important;
             padding-right: 0 !important;
+        }
+    }
+}
+
+// Reserve space for fixed drawers on course pages without the custom banner grid.
+@include media-breakpoint-up(lg) {
+    body:has(#theme_boost-drawers-courseindex):not(
+        .path-course-view:not(.single-section-page):has(#bucourseheader.stacked #courseheaderimage.withimage):has(#page > .main-inner-wrapper.main-inner-outside-none)
+    ) {
+        &:has(#theme_boost-drawers-courseindex.show) {
+            #page.drawers {
+                box-sizing: border-box;
+                margin-left: 0 !important;
+                padding-left: $drawer-left-width !important;
+            }
+        }
+
+        &:has(#theme_boost-drawers-blocks.show) {
+            #page.drawers {
+                box-sizing: border-box;
+                margin-right: 0 !important;
+                padding-right: $drawer-right-width !important;
+            }
         }
     }
 }
