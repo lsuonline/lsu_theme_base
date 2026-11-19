@@ -334,7 +334,7 @@
 
 /* stylelint-enable declaration-no-important */
 
-[data-bs-theme="dark"] .text-dark {
+[data-bs-theme="dark"] .text-dark:not(.badge.bg-secondary) {
     color: var(--mds-text-subtle) !important;
 }
 
@@ -345,4 +345,11 @@
 [data-bs-theme="dark"] .navbar.bg-dark,
 [data-bs-theme="dark"] .navbar.bg-primary {
 --bu-navbar-bg: #201330 !important;
+}
+
+// Dark mode: accessible autocomplete selections.
+[data-bs-theme="dark"] {
+    .form-autocomplete-selection .badge.bg-secondary.text-dark {
+        color: #26222a !important;
+    }
 }
