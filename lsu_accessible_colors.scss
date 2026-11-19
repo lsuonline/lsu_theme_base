@@ -353,3 +353,42 @@
         color: #26222a !important;
     }
 }
+
+// Hidden from courses tag in dashboard.
+[data-bs-theme="dark"] {
+    .card-body .bg-info,
+    .card-body .bg-info:hover,
+    .card-body .bg-info:active {
+        background-color: #19151e !important;
+        color: #A4A298 !important;
+        text-decoration: none;
+        border: none;
+    }
+    .btn-outline-secondary {
+        background-color: #27232A;
+
+        &:hover {
+            color: #000000;
+            background-color: #9C93A0;
+        }
+    }
+    .btn-outline-primary {
+        background-color: #27232A;
+
+        &:hover {
+            color: #000000;
+            background-color: #9C93A0;
+        }
+    }
+}
+
+[data-bs-theme="light"] {
+    .card-body .bg-info,
+    .card-body .bg-info:hover,
+    .card-body .bg-info:active {
+        background-color: #b7b6af !important;
+        color: #2F273A !important;
+        text-decoration: none;
+        border: none;
+    }
+}
