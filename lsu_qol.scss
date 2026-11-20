@@ -75,3 +75,27 @@
         background-color: var(--bs-body-bg) !important;
     }
 }
+
+.course-section .summarytext svg,
+.course-section .summarytext img[src$=".svg"],
+.course-section .summarytext img[src*=".svg?"],
+.course-section svg,
+.course-section img[src$=".svg"],
+.course-section img[src*=".svg?"] {
+    border-radius: unset;
+}
+
+[data-bs-theme="dark"] {
+    .path-mod-book img[src*="pluginfile.php/"][src*=".svg"],
+    .course-section img[src*="pluginfile.php/"][src*=".svg"] {
+        border-radius: 0 !important;
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+[data-bs-theme="dark"] {
+    .sectionbadges .fa-regular,
+    .sectionbadges .fa-eye-slash {
+        color: inherit !important;
+    }
+}
